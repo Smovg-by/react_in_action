@@ -1,717 +1,217 @@
-//-------------------------------------------------------------------------------------------------ACTION 2.7
-
-// import React from "react";
-// import { render } from "react-dom";
-// import PropTypes from "prop-types";
-
-// const node = document.getElementById("root");
-
-// class Post extends React.Component {
-//   render() {
-//     return React.createElement(
-//       "div",
-//       {
-//         className: "post"
-//       },
-//       React.createElement(
-//         "h2",
-//         {
-//           className: "postAuthor",
-//           id: this.props.id
-//         },
-//         this.props.user,
-//         React.createElement(
-//           "span",
-//           {
-//             className: "postBody"
-//           },
-//           this.props.content
-//         ),
-//         this.props.children
-//       )
-//     );
-//   }
-// }
-
-// Post.propTypes = {
-//   user: PropTypes.string.isRequired,
-//   content: PropTypes.string.isRequired,
-//   id: PropTypes.number.isRequired
-// };
-
-// class Comment extends React.Component {
-//   render() {
-//     return React.createElement(
-//       "div",
-//       {
-//         className: "comment"
-//       },
-//       React.createElement(
-//         "h2",
-//         {
-//           className: "commentAuthor"
-//         },
-//         this.props.user,
-//         React.createElement(
-//           "span",
-//           {
-//             className: "commentContent"
-//           },
-//           this.props.content
-//         )
-//       )
-//     );
-//   }
-// }
-
-// Comment.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   content: PropTypes.string.isRequired,
-//   user: PropTypes.string.isRequired
-// };
-
-// class CreateComment extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       content: "",
-//       user: ""
-//     };
-//     this.handleUserChange = this.handleUserChange.bind(this);
-//     this.handleTextChange = this.handleTextChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-//   handleUserChange(event) {
-//     const val = event.target.value;
-//     this.setState(() => ({
-//       user: val
-//     }));
-//   }
-//   handleTextChange(event) {
-//     const val = event.target.value;
-//     this.setState({
-//       content: val
-//     });
-//   }
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     this.setState(() => ({
-//       user: "",
-//       content: ""
-//     }));
-//   }
-//   render() {
-//     return React.createElement(
-//       "form",
-//       {
-//         className: "createComment",
-//         onSubmit: this.handleSubmit
-//       },
-//       React.createElement("input", {
-//         type: "text",
-//         placeholder: "Your name",
-//         value: this.state.user,
-//         onChange: this.handleUserChange
-//       }),
-//       React.createElement("input", {
-//         type: "text",
-//         placeholder: "Thoughts?",
-//         value: this.state.content,
-//         onChange: this.handleTextChange
-//       }),
-//       React.createElement("input", {
-//         type: "submit",
-//         value: "Post"
-//       })
-//     );
-//   }
-// }
-// CreateComment.propTypes = {
-//   onCommentSubmit: PropTypes.func.isRequired,
-//   content: PropTypes.string
-// };
-
-// const App = React.createElement(
-//   Post,
-//   {
-//     id: 1,
-//     content: " said: This is a post!",
-//     user: "mark"
-//   },
-//   React.createElement(Comment, {
-//     id: 2,
-//     user: "bob",
-//     content: " commented: wow! how cool!"
-//   }),
-//   React.createElement(CreateComment)
-// );
-
-// render(App, node);
-
-//-------------------------------------------------------------------------------------------------ACTION 2.8
-
-// import React from "react";
-// import { render } from "react-dom";
-// import PropTypes from "prop-types";
-
-// const node = document.getElementById("root");
-
-// class Post extends React.Component {
-//   render() {
-//     return React.createElement(
-//       "div",
-//       {
-//         className: "post"
-//       },
-//       React.createElement(
-//         "h2",
-//         {
-//           className: "postAuthor",
-//           id: this.props.id
-//         },
-//         this.props.user,
-//         React.createElement(
-//           "span",
-//           {
-//             className: "postBody"
-//           },
-//           this.props.content
-//         ),
-//         this.props.children
-//       )
-//     );
-//   }
-// }
-
-// Post.propTypes = {
-//   user: PropTypes.string.isRequired,
-//   content: PropTypes.string.isRequired,
-//   id: PropTypes.number.isRequired
-// };
-
-// class Comment extends React.Component {
-//   render() {
-//     return React.createElement(
-//       "div",
-//       {
-//         className: "comment"
-//       },
-//       React.createElement(
-//         "h2",
-//         {
-//           className: "commentAuthor"
-//         },
-//         this.props.user,
-//         React.createElement(
-//           "span",
-//           {
-//             className: "commentContent"
-//           },
-//           this.props.content
-//         )
-//       )
-//     );
-//   }
-// }
-
-// Comment.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   content: PropTypes.string.isRequired,
-//   user: PropTypes.string.isRequired
-// };
-
-// class CreateComment extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       content: "",
-//       user: ""
-//     };
-//     this.handleUserChange = this.handleUserChange.bind(this);
-//     this.handleTextChange = this.handleTextChange.bind(this);
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-//   handleUserChange(event) {
-//     const val = event.target.value;
-//     this.setState(() => ({
-//       user: val
-//     }));
-//   }
-//   handleTextChange(event) {
-//     const val = event.target.value;
-//     this.setState({
-//       content: val
-//     });
-//   }
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     this.props.onCommentSubmit({
-//       user: this.state.user.trim(),
-//       content: this.state.content.trim()
-//     });
-
-//     this.setState(() => ({
-//       user: "",
-//       content: ""
-//     }));
-//   }
-//   render() {
-//     return React.createElement(
-//       "form",
-//       {
-//         className: "createComment",
-//         onSubmit: this.handleSubmit
-//       },
-//       React.createElement("input", {
-//         type: "text",
-//         placeholder: "Your name",
-//         value: this.state.user,
-//         onChange: this.handleUserChange
-//       }),
-//       React.createElement("input", {
-//         type: "text",
-//         placeholder: "Thoughts?",
-//         value: this.state.content,
-//         onChange: this.handleTextChange
-//       }),
-//       React.createElement("input", {
-//         type: "submit",
-//         value: "Post"
-//       })
-//     );
-//   }
-// }
-// CreateComment.propTypes = {
-//   onCommentSubmit: PropTypes.func.isRequired,
-//   content: PropTypes.string
-// };
-
-// const App = React.createElement(
-//   Post,
-//   {
-//     id: 1,
-//     content: " said: This is a post!",
-//     user: "mark"
-//   },
-//   React.createElement(Comment, {
-//     id: 2,
-//     user: "bob",
-//     content: " commented: wow! how cool!"
-//   }),
-//   React.createElement(CreateComment)
-// );
-
-// render(App, node);
-
-//-------------------------------------------------------------------------------------------------ACTION 2.10
-// add coments above the post
+//-------------------------------------------------------------------------------------------------ACTION 3.2
+// setState
 
 // import React, { Component } from 'react'
+// import { render } from 'react-dom'
+
+// const node = document.getElementById('root')
+
+// class Secret extends React.Component {
+//   constructor (props) {
+//     super(props)
+//     this.state = {
+//       name: 'top secret'
+//     }
+//     this.onButtonClick = this.onButtonClick.bind(this)
+//   }
+//   onButtonClick () {
+//     this.setState(() => ({
+//       name: 'Mark'
+//     }))
+//   }
+
+//   render () {
+//     return (
+//       <div>
+//         <h1>My name is {this.state.name}</h1>
+//         <button onClick={this.onButtonClick}>Reveal the secret!</button>
+//         <NoSecret/>
+//       </div>
+//     )
+//   }
+// }
+
+// class NoSecret extends React.Component{
+//   constructor(props) {
+//     super(props)
+//   this.state = {
+//     id: Date.now(),
+//     title: 'ID is not altered'
+//   }
+//   this.onButtonClick = this.onButtonClick.bind(this)
+//   }
+//   onButtonClick() {
+//     this.setState(()=>({id: Date.now(), title: 'id is altered'}))
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <div>{this.state.id}</div>
+//         <div>{this.state.title}</div>
+//         <button onClick={this.onButtonClick}>Press me</button>
+//       </div>
+//     )
+//   }
+// }
+
+// render(<Secret />, node)
+
+//-------------------------------------------------------------------------------------------------ACTION 3.3
+// Мелкое слияние с setState. State Перезаписывается, name При клике не оторажается
+
+// import React, { Component } from 'react'
+// import { render } from 'react-dom'
+
+// const node = document.getElementById('root')
+
+// class ShallowMerge extends React.Component {
+//   constructor (props) {
+//     super(props)
+//     this.state = {
+//       user: {
+//         name: 'MARK',
+//         colors: {
+//           favourite: 'NO'
+//         }
+//       }
+//     }
+//     this.onButtonClick = this.onButtonClick.bind(this)
+//   }
+//   onButtonClick = () => {
+//     this.setState({
+//       user: {
+//         colors: {
+//           favourite: 'BLUE'
+//         }
+//       }
+//     })
+//   }
+//   render () {
+//     return (
+//       <div>
+//         <h1>
+//           My favourite color is {this.state.user.colors.favourite} and my name
+//           is {this.state.user.name}{' '}
+//         </h1>
+//         <button onClick={this.onButtonClick}>Show the color</button>
+//       </div>
+//     )
+//   }
+// }
+
+// render(<ShallowMerge />, node)
+
+//-------------------------------------------------------------------------------------------------ACTION 3.4
+// Использование PropTypes и defaultProps программе-счетчике
+
+// import React from 'react'
 // import { render } from 'react-dom'
 // import PropTypes from 'prop-types'
 
 // const node = document.getElementById('root')
 
-// const data = {
-//   post: {
-//     id: 123,
-//     content:
-//       'What we hope ever to do with ease, we must first learn to do with diligence. — Samuel Johnson',
-//     user: 'Mark Thomas'
-//   },
-//   comments: [
-//     {
-//       id: 0,
-//       user: 'David',
-//       content: 'such. win.'
-//     },
-//     {
-//       id: 1,
-//       user: 'Haley',
-//       content: 'Love it.'
-//     },
-//     {
-//       id: 2,
-//       user: 'Peter',
-//       content: 'Who was Samuel Johnson?'
-//     },
-//     {
-//       id: 3,
-//       user: 'Mitchell',
-//       content: '@Peter get off Letters and do your homework'
-//     },
-//     {
-//       id: 4,
-//       user: 'Peter',
-//       content: '@mitchell ok :P'
-//     }
-//   ]
-// }
-
-// class Post extends Component {
-//   constructor (props) {
-//     super(props)
+// class Counter extends React.Component {
+//   static propTypes = {
+//     incrementBy: PropTypes.number,
+//     onIncrement: PropTypes.func.isRequired
 //   }
-//   render () {
-//     return React.createElement(
-//       'div',
-//       {
-//         className: 'post'
-//       },
-//       React.createElement(
-//         'h2',
-//         {
-//           className: 'postAuthor',
-//           id: this.props.id
-//         },
-//         this.props.user,
-//         React.createElement(
-//           'span',
-//           {
-//             className: 'postBody'
-//           },
-//           this.props.content
-//         ),
-//         this.props.children
-//       )
-//     )
+//   static defaultProps = {
+//     incrementBy: 1
 //   }
-// }
-
-// Post.propTypes = {
-//   user: PropTypes.string.isRequired,
-//   content: PropTypes.string.isRequired,
-//   id: PropTypes.number.isRequired
-// }
-
-// class Comment extends Component {
-//   constructor (props) {
-//     super(props)
-//   }
-//   render () {
-//     return React.createElement(
-//       'div',
-//       {
-//         className: 'comment'
-//       },
-//       React.createElement(
-//         'h2',
-//         {
-//           className: 'commentAuthor'
-//         },
-//         this.props.user,
-//         React.createElement(
-//           'span',
-//           {
-//             className: 'commentContent'
-//           },
-//           this.props.content
-//         )
-//       )
-//     )
-//   }
-// }
-
-// Comment.propTypes = {
-//   id: PropTypes.number.isRequired,
-//   content: PropTypes.string.isRequired,
-//   user: PropTypes.string.isRequired
-// }
-
-// class CreateComment extends Component {
 //   constructor (props) {
 //     super(props)
 //     this.state = {
-//       content: '',
-//       user: ''
+//       count: 0
 //     }
-//     this.handleUserChange = this.handleUserChange.bind(this)
-//     this.handleTextChange = this.handleTextChange.bind(this)
-//     this.handleSubmit = this.handleSubmit.bind(this)
+//     this.onButtonClick = this.onButtonClick.bind(this)
 //   }
-//   handleUserChange (event) {
-//     const val = event.target.value
-//     this.setState(() => ({
-//       user: val
-//     }))
-//   }
-//   handleTextChange (event) {
-//     const val = event.target.value
-//     this.setState({
-//       content: val
-//     })
-//   }
-//   handleSubmit (event) {
-//     event.preventDefault()
-//     this.props.onCommentSubmit({
-//       user: this.state.user.trim(),
-//       content: this.state.content.trim()
-//     })
-
-//     this.setState(() => ({
-//       user: '',
-//       content: ''
-//     }))
-//   }
-//   render () {
-//     return React.createElement(
-//       'form',
-//       {
-//         className: 'createComment',
-//         onSubmit: this.handleSubmit
-//       },
-//       React.createElement('input', {
-//         type: 'text',
-//         placeholder: 'Your name',
-//         value: this.state.user,
-//         onChange: this.handleUserChange
-//       }),
-//       React.createElement('input', {
-//         type: 'text',
-//         placeholder: 'Thoughts?',
-//         value: this.state.content,
-//         onChange: this.handleTextChange
-//       }),
-//       React.createElement('input', {
-//         type: 'submit',
-//         value: 'Post'
-//       })
-//     )
-//   }
-// }
-// CreateComment.propTypes = {
-//   onCommentSubmit: PropTypes.func.isRequired,
-//   content: PropTypes.string
-// }
-
-// class CommentBox extends Component {
-//   constructor (props) {
-//     super(props)
-//     this.state = {
-//       comments: this.props.comments
-//     }
-//     this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
-//   }
-//   handleCommentSubmit (comment) {
-//     const comments = this.state.comments
-//     comment.id = Date.now()
-//     const newComments = comments.concat([comment])
-//     this.setState({
-//       comments: newComments
+//   onButtonClick () {
+//     this.setState((prevState, props) => {
+//       return {
+//         count: prevState.count + props.incrementBy
+//       }
 //     })
 //   }
 //   render () {
-//     return React.createElement(
-//       'div',
-//       {
-//         className: 'commentBox'
-//       },
-//       React.createElement(Post, {
-//         id: this.props.post.id,
-//         content: this.props.post.content,
-//         user: this.props.post.user
-//       }),
-//       this.state.comments.map(function (comment) {
-//         return React.createElement(Comment, {
-//           key: comment.id,
-//           id: comment.id,
-//           content: comment.content,
-//           user: comment.user
-//         })
-//       }),
-//       React.createElement(CreateComment, {
-//         onCommentSubmit: this.handleCommentSubmit
-//       })
+//     return (
+//       <div>
+//         <h1>{this.state.count}</h1>
+//         <button onClick={this.onButtonClick}>++</button>
+//       </div>
 //     )
 //   }
 // }
 
-// CommentBox.propTypes = {
-//   post: PropTypes.object,
-//   comments: PropTypes.arrayOf(PropTypes.object)
+// render(<Counter incrementBy={1} />, node)
+
+//-------------------------------------------------------------------------------------------------ACTION 3.5
+// Функицональная компонента
+
+// import React from 'react'
+// import { render } from 'react-dom'
+// import PropTypes from 'prop-types'
+
+// const node = document.getElementById('root')
+// //Функциональная компонента
+// function Greeting (props) {
+//   return <div>Hello {props.for}</div>
+// }
+// // Задаем типы PropTypes
+// Greeting.propTypes = {
+//   for: PropTypes.string.isRequired
+// }
+// // Если props не будут переданы, сработает defaultProps
+// Greeting.defaultProps = {
+//   for: 'friend'
 // }
 
-// render(
-//   React.createElement(CommentBox, {
-//     comments: data.comments,
-//     post: data.post
-//   }),
-//   node
-// )
+// render(<Greeting for='Mark' />, node)
 
-//-------------------------------------------------------------------------------------------------ACTION 2.11
-// JSX
+//-------------------------------------------------------------------------------------------------ACTION 3.6
+// Передача свойств(props) от родителя к потомку в функциональных компонентах
 
-import React, { Component } from 'react'
+import React from 'react'
 import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 
-const node = document.getElementById('root')
-
-const data = {
-  post: {
-    id: 123,
-    content:
-      'What we hope ever to do with ease, we must first learn to do with diligence. — Samuel Johnson',
-    user: 'Mark Thomas'
-  },
-  comments: [
-    {
-      id: 0,
-      user: 'David',
-      content: 'such. win.'
-    },
-    {
-      id: 1,
-      user: 'Haley',
-      content: 'Love it.'
-    },
-    {
-      id: 2,
-      user: 'Peter',
-      content: 'Who was Samuel Johnson?'
-    },
-    {
-      id: 3,
-      user: 'Mitchell',
-      content: '@Peter get off Letters and do your homework'
-    },
-    {
-      id: 4,
-      user: 'Peter',
-      content: '@mitchell ok :P'
-    }
-  ]
-}
-class Post extends Component {
-  render () {
-    return (
-      <div className='post'>
-        <h2 className='postAuthor'>{this.props.user}</h2>
-        <span className='postBody'>{this.props.content}</span>
-        {this.props.children}
-      </div>
-    )
-  }
-}
-Post.propTypes = {
-  user: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired
+const UserProfile = props => {
+  return (
+    <img
+      src={
+        'https://i.gifer.com/fetch/w300-preview/eb/eb1fc0d6d1167c9ebdec507647cdb1a4.gif'
+      }
+      alt={props.username}
+    />
+  )
 }
 
-class Comment extends Component {
-  render () {
-    return (
-      <div className='comment'>
-        <h2 className='commentAuthor'>{this.props.user + ' : '}</h2>
-        <span className='commentContent'>{this.props.content}</span>
-      </div>
-    )
-  }
+UserProfile.propTypes = {
+  pagename: PropTypes.string
 }
 
-Comment.propTypes = {
-  id: PropTypes.number.isRequired,
-  content: PropTypes.string.isRequired,
-  user: PropTypes.string.isRequired
+UserProfile.defaultProps = {
+  pagename: 'erondu'
 }
 
-class CreateComment extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      content: '',
-      user: ''
-    }
-    this.handleUserChange = this.handleUserChange.bind(this)
-    this.handleTextChange = this.handleTextChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  handleUserChange (event) {
-    this.setState({
-      user: event.target.value
-    })
-  }
-  handleTextChange (event) {
-    this.setState({
-      content: event.target.value
-    })
-  }
-  handleSubmit (event) {
-    event.preventDefault()
-    this.props.onCommentSubmit({
-      user: this.state.user.trim(),
-      content: this.state.content.trim()
-    })
-    this.setState({
-      user: '',
-      content: ''
-    })
-  }
-  render () {
-    return (
-      <form onSubmit={this.handleSubmit} className='createComment'>
-        <input
-          value={this.state.user}
-          onChange={this.handleUserChange}
-          placeholder='Your name'
-          type='text'
-        />
-        <input
-          value={this.state.content}
-          onChange={this.handleTextChange}
-          placeholder='Thoughts?'
-          type='text'
-        />
-        <button type='submit'>Post</button>
-      </form>
-    )
-  }
+const UserProfileLink = props => {
+  return (
+    <a
+      href={
+        'https://i.gifer.com/fetch/w300-preview/eb/eb1fc0d6d1167c9ebdec507647cdb1a4.gif'
+      }
+    >
+      {props.username}
+    </a>
+  )
 }
 
-class CommentBox extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      comments: this.props.comments
-    }
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
-  }
-  handleCommentSubmit (comment) {
-    const comments = this.state.comments
-    comment.id = Date.now()
-    const newComments = comments.concat([comment])
-    this.setState({
-      comments: newComments
-    })
-  }
-  render () {
-    return (
-      <div className='commentBox'>
-        <Post
-          id={this.props.post.id}
-          content={this.props.post.content}
-          user={this.props.post.user}
-        />
-        {this.state.comments.map(function (comment) {
-          return (
-            <Comment
-              key={comment.id}
-              content={comment.content}
-              user={comment.user}
-            />
-          )
-        })}
-        <CreateComment onCommentSubmit={this.handleCommentSubmit} />
-      </div>
-    )
-  }
+const UserCard = props => {
+  return (
+    <div>
+      <UserProfile username={props.username} />
+      <UserProfileLink username={props.username} />
+    </div>
+  )
 }
 
-CommentBox.propTypes = {
-  post: PropTypes.object,
-  comments: PropTypes.arrayOf(PropTypes.object)
-}
-
-render(<CommentBox comments={data.comments} post={data.post} />, node)
+render(<UserCard username='erondu' />, document.getElementById('root'))
